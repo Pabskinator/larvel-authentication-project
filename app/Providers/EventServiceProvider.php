@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\ProductPurchased;
+use App\Listeners\AwardAchievements;
+use App\Listeners\SendSharableCoupon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +21,13 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        //be explicit and add all the events
+
+//        ProductPurchased::class => [
+//            AwardAchievements::class,
+//            SendSharableCoupon::class
+//        ],
     ];
 
     /**
@@ -29,4 +39,11 @@ class EventServiceProvider extends ServiceProvider
     {
         //
     }
+
+    public function shouldDiscoverEvents()
+    {
+        return true;
+    }
+
+
 }
