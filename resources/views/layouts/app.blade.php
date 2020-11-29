@@ -40,6 +40,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link {{ Request::path() === 'conversations' ? 'text-success' : '' }}"
+                                    href="{{ route('conversations.index') }}">
+                                    Conversations
+                                </a>
+                            </li>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -64,6 +71,13 @@
                                     class="nav-link {{ Request::path() === 'notifications' ? 'text-success' : '' }}"
                                     href="{{ route('notifications.show') }}">
                                     Notifications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link {{ Request::path() === 'conversations' ? 'text-success' : '' }}"
+                                    href="{{ route('conversations.index') }}">
+                                    Conversations
                                 </a>
                             </li>
                             <li class="nav-item">

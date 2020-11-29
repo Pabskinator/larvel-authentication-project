@@ -26,5 +26,6 @@ Route::post('payments', 'PaymentsController@store')->middleware('auth');
 
 Route::get('notifications', 'UserNotificationsController@show')->middleware('auth')->name('notifications.show');
 
-Route::get('conversations', 'ConversationsController@index');
-Route::get('conversations/{conversation}', 'ConversationsController@show');
+Route::get('conversations', 'ConversationController@index')->name('conversations.index');
+Route::get('conversations/{conversation}', 'ConversationController@show');
+Route::post('best-replies/{reply}', 'ConversationBestReplyController@store');
