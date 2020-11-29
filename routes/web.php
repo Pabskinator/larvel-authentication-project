@@ -17,11 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('payments/create', 'PaymentsController@create')->middleware('auth');
-Route::post('payments', 'PaymentsController@store')->middleware('auth');
-
-Route::get('notifications', 'UserNotificationsController@show')->middleware('auth');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('payments/create', 'PaymentsController@create')->middleware('auth')->name('payments.create');
+Route::post('payments', 'PaymentsController@store')->middleware('auth');
+
+Route::get('notifications', 'UserNotificationsController@show')->middleware('auth')->name('notifications.show');
+
+Route::get('conversations', 'ConversationsController@index');
+Route::get('conversations/{conversation}', 'ConversationsController@show');
