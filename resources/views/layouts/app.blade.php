@@ -87,6 +87,25 @@
                                     Payments
                                 </a>
                             </li>
+                            @can('edit_forum')
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link {{ Request::path() === 'payments/create' ? 'text-success' : '' }}"
+                                    href="{{ route('payments.create') }}">
+                                    Edit Forum
+                                </a>
+                            </li>
+                            @endcan
+
+                            @can('view_reports')
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link {{ Request::path() === '/reports' ? 'text-success' : '' }}"
+                                        href="{{ route('reports') }}">
+                                        View Reports
+                                    </a>
+                                </li>
+                            @endcan
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

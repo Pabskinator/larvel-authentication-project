@@ -29,3 +29,7 @@ Route::get('notifications', 'UserNotificationsController@show')->middleware('aut
 Route::get('conversations', 'ConversationController@index')->name('conversations.index');
 Route::get('conversations/{conversation}', 'ConversationController@show')->middleware('can:view,conversation');
 Route::post('best-replies/{reply}', 'ConversationBestReplyController@store');
+
+Route::get('reports', function (){
+    return 'The secret reports';
+})->name('reports')->middleware('can:view_reports');
